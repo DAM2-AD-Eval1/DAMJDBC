@@ -1,4 +1,4 @@
-package com.dam.damjdbc;
+package com.dam.jdbcmultiselect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,17 +8,11 @@ import java.sql.Statement;
 
 public class SelectJDBC {
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	public static void conexionBD(String driver, String ruta, String usuario, String password) throws ClassNotFoundException, SQLException {
 		
-		//1. Registrar el driver MySQL
-		//Class.forName("com.mysql.cj.jdbc.Driver");
-		//Registrar el driver PostgreSQL
-		Class.forName("org.postgresql.Driver");
+		Class.forName(driver);
 		
-		//2. Obtenemos la conexión para MySQL
-		//Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/sakila?serverTimezone=Europe/Madrid", "root", "1234.Abcd");
-		//Obtenemos una conexión para PostgreSQL
-		Connection conexion = DriverManager.getConnection("jdbc:postgresql://localhost/sakila", "postgres", "1234.Abcd");
+		Connection conexion = DriverManager.getConnection(ruta, usuario, password);
 		
 		//3. Creación del statement
 		Statement consulta = conexion.createStatement();
